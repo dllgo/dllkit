@@ -49,7 +49,7 @@ var dbService = func() (serv *DBService) {
 
 		engine.DB().SetMaxOpenConns(conf.MaxOpenConns)
 		engine.DB().SetMaxIdleConns(conf.MaxIdleConns)
-		engine.DB().SingularTable(true)
+		engine.SingularTable(true)
 		serv.List[conf.Name] = engine
 		if DEFAULTDB_NAME == conf.Name {
 			serv.Default = engine
