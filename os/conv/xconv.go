@@ -1,8 +1,10 @@
 package conv
+
 import (
-	"strconv"
 	"fmt"
-	"xlkit/os/binary"
+	"strconv"
+
+	"github.com/dllgo/dllkit/os/binary"
 )
 
 func Bytes(i interface{}) []byte {
@@ -22,19 +24,32 @@ func String(i interface{}) string {
 		return ""
 	}
 	switch value := i.(type) {
-	case int:     return strconv.Itoa(value)
-	case int8:    return strconv.Itoa(int(value))
-	case int16:   return strconv.Itoa(int(value))
-	case int32:   return strconv.Itoa(int(value))
-	case int64:   return strconv.Itoa(int(value))
-	case uint:    return strconv.FormatUint(uint64(value), 10)
-	case uint8:   return strconv.FormatUint(uint64(value), 10)
-	case uint16:  return strconv.FormatUint(uint64(value), 10)
-	case uint32:  return strconv.FormatUint(uint64(value), 10)
-	case uint64:  return strconv.FormatUint(uint64(value), 10)
-	case bool:    return strconv.FormatBool(value)
-	case string:  return value
-	case []byte:  return string(value)
+	case int:
+		return strconv.Itoa(value)
+	case int8:
+		return strconv.Itoa(int(value))
+	case int16:
+		return strconv.Itoa(int(value))
+	case int32:
+		return strconv.Itoa(int(value))
+	case int64:
+		return strconv.Itoa(int(value))
+	case uint:
+		return strconv.FormatUint(uint64(value), 10)
+	case uint8:
+		return strconv.FormatUint(uint64(value), 10)
+	case uint16:
+		return strconv.FormatUint(uint64(value), 10)
+	case uint32:
+		return strconv.FormatUint(uint64(value), 10)
+	case uint64:
+		return strconv.FormatUint(uint64(value), 10)
+	case bool:
+		return strconv.FormatBool(value)
+	case string:
+		return value
+	case []byte:
+		return string(value)
 	default:
 		return fmt.Sprintf("%v", value)
 	}
@@ -75,16 +90,26 @@ func Int(i interface{}) int {
 		return 0
 	}
 	switch value := i.(type) {
-	case int:     return value
-	case int8:    return int(value)
-	case int16:   return int(value)
-	case int32:   return int(value)
-	case int64:   return int(value)
-	case uint:    return int(value)
-	case uint8:   return int(value)
-	case uint16:  return int(value)
-	case uint32:  return int(value)
-	case uint64:  return int(value)
+	case int:
+		return value
+	case int8:
+		return int(value)
+	case int16:
+		return int(value)
+	case int32:
+		return int(value)
+	case int64:
+		return int(value)
+	case uint:
+		return int(value)
+	case uint8:
+		return int(value)
+	case uint16:
+		return int(value)
+	case uint32:
+		return int(value)
+	case uint64:
+		return int(value)
 	case bool:
 		if value {
 			return 1
@@ -141,16 +166,26 @@ func Uint(i interface{}) uint {
 		return 0
 	}
 	switch value := i.(type) {
-	case int:     return uint(value)
-	case int8:    return uint(value)
-	case int16:   return uint(value)
-	case int32:   return uint(value)
-	case int64:   return uint(value)
-	case uint:    return value
-	case uint8:   return uint(value)
-	case uint16:  return uint(value)
-	case uint32:  return uint(value)
-	case uint64:  return uint(value)
+	case int:
+		return uint(value)
+	case int8:
+		return uint(value)
+	case int16:
+		return uint(value)
+	case int32:
+		return uint(value)
+	case int64:
+		return uint(value)
+	case uint:
+		return value
+	case uint8:
+		return uint(value)
+	case uint16:
+		return uint(value)
+	case uint32:
+		return uint(value)
+	case uint64:
+		return uint(value)
 	case bool:
 		if value {
 			return 1
@@ -202,7 +237,7 @@ func Uint64(i interface{}) uint64 {
 	return uint64(Uint(i))
 }
 
-func Float32 (i interface{}) float32 {
+func Float32(i interface{}) float32 {
 	if i == nil {
 		return 0
 	}
@@ -213,7 +248,7 @@ func Float32 (i interface{}) float32 {
 	return float32(v)
 }
 
-func Float64 (i interface{}) float64 {
+func Float64(i interface{}) float64 {
 	if i == nil {
 		return 0
 	}
@@ -223,4 +258,3 @@ func Float64 (i interface{}) float64 {
 	v, _ := strconv.ParseFloat(String(i), 32)
 	return v
 }
-
