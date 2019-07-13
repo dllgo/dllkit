@@ -1,9 +1,10 @@
 package gorm
 
 import (
-	"github.com/go-ini/ini"
 	"os"
 	"path/filepath"
+
+	"github.com/go-ini/ini"
 )
 
 // DBConfig is database connection config
@@ -15,6 +16,7 @@ type DBConfig struct {
 	MaxOpenConns int    `ini:"max_open_conns"`
 	MaxIdleConns int    `ini:"max_idle_conns"`
 	ShowSql      bool   `ini:"show_sql" comment:"print sql"`
+	TableFix     string `ini:"table_fix" comment:"table_fix"`
 }
 
 // default constant
@@ -33,6 +35,7 @@ var (
 		MaxOpenConns: 100,
 		MaxIdleConns: 100,
 		ShowSql:      false,
+		TableFix:     "",
 	}
 )
 

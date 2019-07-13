@@ -1,10 +1,11 @@
 package gorm
 
 import (
-	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"log"
 	"strings"
+
+	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
 // DBService is a database engine object.
@@ -44,15 +45,17 @@ var dbService = func() (serv *DBService) {
 			errs = append(errs, err.Error())
 			continue
 		}
-		//engine.SetLogger(faygo.NewLog())
 		engine.LogMode(conf.ShowSql)
 
 		engine.DB().SetMaxOpenConns(conf.MaxOpenConns)
 		engine.DB().SetMaxIdleConns(conf.MaxIdleConns)
-
+		engine.DB().SingularTable(true)
 		serv.List[conf.Name] = engine
 		if DEFAULTDB_NAME == conf.Name {
 			serv.Default = engine
+		}
+		gorm.DefaultTableNameHandler = func(db *gorm.DB, defaultTableName string) string {
+			return conf.TableFix + defaultTableName
 		}
 	}
 	return
