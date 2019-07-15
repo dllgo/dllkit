@@ -71,6 +71,37 @@ func Strings(i interface{}) []string {
 	return []string{fmt.Sprintf("%v", i)}
 }
 
+func String2Int64(i interface{}) []int64 {
+	if i == nil {
+		return nil
+	}
+	if r, ok := i.([]int64); ok {
+		return r
+	} else if r, ok := i.([]interface{}); ok {
+		strs := make([]int64, len(r))
+		for k, v := range r {
+			strs[k] = int64(v)
+		}
+		return strs
+	}
+	return []int64{fmt.Sprintf("%v", i)}
+}
+func String2Int(i interface{}) []int {
+	if i == nil {
+		return nil
+	}
+	if r, ok := i.([]int); ok {
+		return r
+	} else if r, ok := i.([]interface{}); ok {
+		strs := make([]int, len(r))
+		for k, v := range r {
+			strs[k] = int(v)
+		}
+		return strs
+	}
+	return []int{fmt.Sprintf("%v", i)}
+}
+
 //false: "", 0, false, off
 func Bool(i interface{}) bool {
 	if i == nil {
