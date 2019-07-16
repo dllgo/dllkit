@@ -80,11 +80,11 @@ func String2Int64(i interface{}) []int64 {
 	} else if r, ok := i.([]interface{}); ok {
 		strs := make([]int64, len(r))
 		for k, v := range r {
-			strs[k] = int64(v)
+			strs[k] = Int64(v)
 		}
 		return strs
 	}
-	return []int64{fmt.Sprintf("%v", i)}
+	return []int64{Int64(i)}
 }
 func String2Int(i interface{}) []int {
 	if i == nil {
@@ -95,11 +95,11 @@ func String2Int(i interface{}) []int {
 	} else if r, ok := i.([]interface{}); ok {
 		strs := make([]int, len(r))
 		for k, v := range r {
-			strs[k] = int(v)
+			strs[k] = Int(v)
 		}
 		return strs
 	}
-	return []int{fmt.Sprintf("%v", i)}
+	return []int{Int(i)}
 }
 
 //false: "", 0, false, off
